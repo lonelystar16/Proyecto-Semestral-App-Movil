@@ -12,7 +12,7 @@ En este repositorio se creará una aplicación móvil
 
  - Ramo: Programación de Aplicaciones Móviles || PGY4121
  - Docente: Jose Riquelme 🧑‍🏫
-- Institución: Duoc UC
+ - Institución: Duoc UC
   
 
 ## Integrantes
