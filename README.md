@@ -22,15 +22,16 @@ En este repositorio se creará una aplicación móvil
 - [XXXXXXXXXXX](https://www.github.com/XXXXXXXXX)
 ## Herramientas y Tecnologías
 
+**Lenguaje:** TypeScript
 **Cliente:** Angular
-
-**Server:** Node.js, TypeScript
+**Server:** Node.js
 
 
 ## Requisitos Previos
 Antes de poder ejecutar la aplicación es necesario de tener instalados los siguientes requisitos en tu ordenador:
 ##
-- Node.js (versión 14.x o superior): [Descargar Node.js](https://nodejs.org/en)
+- Node.js (versión 14.x o superior):
+  [Descargar Node.js](https://nodejs.org/en)
 - Angular CLI (versión 12.x o superior)
 Se puede instalar con el siguiente comando:
 ##
