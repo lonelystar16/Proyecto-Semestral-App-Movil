@@ -17,8 +17,8 @@ En este repositorio se creará una aplicación móvil
   
 
 ## Integrantes
-- **[Fernando Muñoz]**(https://www.github.com/lonelystar16)
-- **[Martín Quiroga]**(https://github.com/trollynnn)
+- [Fernando Muñoz](https://www.github.com/lonelystar16)
+- [Martín Quiroga](https://github.com/trollynnn)
 ## Herramientas y Tecnologías
 
 **Lenguaje:** TypeScript
