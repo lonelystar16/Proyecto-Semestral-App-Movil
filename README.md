@@ -11,15 +11,14 @@ En este repositorio se creará una aplicación móvil
 ## Información General ♦️
 
  - Ramo: Programación de Aplicaciones Móviles || PGY4121
+ - Sección: 006D
  - Docente: Jose Riquelme 🧑‍🏫
  - Institución: Duoc UC
   
 
 ## Integrantes
-
-- [Fernando Muñoz](https://www.github.com/lonelystar16)
-- [XXXXXXXXXXX](https://www.github.com/XXXXXXXXX)
-- [XXXXXXXXXXX](https://www.github.com/XXXXXXXXX)
+- **[Fernando Muñoz]**(https://www.github.com/lonelystar16)
+- **[Martín Quiroga]**(https://github.com/trollynnn)
 ## Herramientas y Tecnologías
 
 **Lenguaje:** TypeScript
