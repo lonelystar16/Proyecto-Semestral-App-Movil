@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Skeleton APP
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,8 +13,32 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  <div id="container-title">
+    <h1>Skeleton APP</h1>
+    <h2>Aqui comienza todo</h2>
   </div>
+
+  <div id="card-inicio-sesion">
+    <ion-card>
+      <h1>Bienvenido</h1>
+      <ion-card-header>
+        <ion-card-title>Iniciar Sesión</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-item>
+          <ion-label position="floating" aria-placeholder="Ingrese su Usuario">Usuario</ion-label>
+          <ion-input type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña</ion-label>
+          <ion-input type="password"></ion-input>
+        </ion-item>
+        <ion-button shape="round">Iniciar Sesion</ion-button>
+        <!-- Link para registrarse | pagina = registo -->
+        <ion-button shape="round" routerLink="/registro">Registrarse</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+
 </ion-content>
