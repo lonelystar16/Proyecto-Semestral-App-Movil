@@ -16,7 +16,6 @@ export class HomePage {
   // Mensaje 
   mensaje = '';
   spinner = false;
-  
 
   // Constructor
   constructor(private router: Router, private animationController: AnimationController) { }
@@ -45,10 +44,12 @@ export class HomePage {
     this.spinner = !this.spinner;
   }
 
-
+  // Usuario debe ingresar cadena alfanumérica de un largo maximo de 8 y minimo de 3
+  // Contraseña numerica de 4 digitos
+  // Método que se ejecuta al hacer clic en el botón
   validar() {
-    if (this.user.username.length != 0) {
-      if (this.user.password.length != 0) {
+    if (this.user.username.length <= 8 && this.user.username.length >= 3) {
+      if (this.user.password.length == 4) {
         // Funciona
         this.mensaje = 'Usuario y contraseña correctos';
         // Crear objeto de navegación
@@ -74,5 +75,10 @@ export class HomePage {
       this.mensaje = 'Usuario incorrecto';
     }
   }
-}
+
+    
+    
+
+  }
+
 
