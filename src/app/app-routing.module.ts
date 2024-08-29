@@ -14,6 +14,10 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./pagRegisto/registro/registro.module').then( m => m.RegistroPageModule)
   },
+  {
+    path: 'formulario',
+    loadChildren: () => import('./pagFormulario/formulario/formulario.module').then( m => m.FormularioPageModule)
+  },
 
 ];
 
