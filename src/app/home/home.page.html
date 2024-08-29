@@ -13,14 +13,21 @@
     </ion-toolbar>
   </ion-header>
 
-  <div id="container-title">
+
+
+
+  <div class="container-title">
     <h1>Skeleton APP</h1>
     <h2>Aqui comienza todo</h2>
+
   </div>
 
   <div id="card-inicio-sesion">
     <ion-card>
       <h1>Bienvenido</h1>
+      <div class="img-titulo">
+        <img src="../../assets/img/GwenIcon.jpeg" alt="login">
+      </div>
       <ion-card-header>
         <ion-card-title>Iniciar Sesión</ion-card-title>
       </ion-card-header>
@@ -31,15 +38,23 @@
         </ion-item>
         <ion-item>
           <ion-label position="floating">Contraseña</ion-label>
-          <ion-input type="password" [(ngModel)]="user.password" ></ion-input>
+          <ion-input type="password" [(ngModel)]="user.password"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label>
             {{mensaje}}
           </ion-label>
         </ion-item>
+        <div id="icon-carga" *ngIf="spinner">
+          <ion-item>
+            <ion-label>Cargando</ion-label>
+          </ion-item>
+          <ion-item>
+            <mat-spinner></mat-spinner>
+          </ion-item>
+        </div>
         <!-- (click)="validar()" -->
-        <ion-button shape="round" (click)="validar()" >Iniciar Sesion</ion-button>
+        <ion-button shape="round" (click)="validar()">Iniciar Sesion</ion-button>
         <!-- Link para registrarse | pagina = registo -->
         <!-- [RouterLink]="/..." -->
         <ion-button shape="round" [routerLink]="['/registro']">Registrarse</ion-button>
