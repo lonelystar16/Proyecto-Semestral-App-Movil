@@ -1,13 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router} from '@angular/router';
+import { Router } from '@angular/router';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { provideNativeDateAdapter } from '@angular/material/core';
+
 @Component({
   selector: 'app-registro',
   templateUrl: './registro.page.html',
   styleUrls: ['./registro.page.scss'],
+
+  providers: [provideNativeDateAdapter()],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RegistroPage implements OnInit {
+
   username = '';
 
+  startDate = Date.now();
   // 
   constructor(private router: Router) {
     // 
@@ -16,8 +24,11 @@ export class RegistroPage implements OnInit {
       user: '';
       pass: '';
     };
-    this.username = state.user;
+    if (state) {
+      this.username = state.user;
+    }
   }
+
   ngOnInit() {
   }
 
