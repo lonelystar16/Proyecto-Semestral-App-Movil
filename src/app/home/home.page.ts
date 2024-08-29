@@ -76,9 +76,9 @@ export class HomePage {
     }
   }
 
-    
-    
 
-  }
+
+
+}
 
 
