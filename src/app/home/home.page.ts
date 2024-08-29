@@ -16,14 +16,14 @@ export class HomePage {
   // Mensaje 
   mensaje = '';
   spinner = false;
-
+  
 
   // Constructor
   constructor(private router: Router, private animationController: AnimationController) { }
 
   // Generar animación
   generarAnimacion() {
-    const elemento = document.querySelector('#GwenIcon') as HTMLElement;
+    const elemento = document.querySelector('.img-titulo') as HTMLElement;
     // Crear animación
     const animacion = this.animationController.create()
       .addElement(elemento)
