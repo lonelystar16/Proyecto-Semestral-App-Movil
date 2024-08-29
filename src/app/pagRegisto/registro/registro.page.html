@@ -1,19 +1,50 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Registro</ion-title>
+    <ion-title id="header1-registro">Registro</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Registro</ion-title>
+      <ion-title></ion-title>
     </ion-toolbar>
   </ion-header>
 
   <div id="titulo">
     <h1>Registro</h1>
     <h2>Bienvenido {{username}}</h2>
+  </div>
+  <!-- Nombre, Apellido, Nivel Educación (Basica,Media,Superior), Fecha Nacimiento -->
+  <div class="form-container">
+    <!-- * Nombre -->
+    <ion-item>
+      <ion-label position="floating">Nombre</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- * Apellido -->
+    <ion-item>
+      <ion-label position="floating">Apellido</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+    <!-- * Nivel Educación -->
+    <ion-item>
+      <ion-select label="Educación" label-placement="fixed" placeholder="Seleccione una opción">
+        <ion-select-option value="e.Basica">Enseñanza Basica</ion-select-option>
+        <ion-select-option value="e.media">Enseñanza Media</ion-select-option>
+        <ion-select-option value="e.superior">Enseñanza Superior</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <!-- * Fecha Nacimiento -->
+    <ion-item>
+      <mat-form-field>
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" [startAt]="startDate"></mat-datepicker>
+      </mat-form-field>
+    </ion-item>
   </div>
 
 
