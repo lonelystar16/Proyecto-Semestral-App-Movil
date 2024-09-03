@@ -68,16 +68,18 @@ export class LoginPage implements OnInit {
       if (this.alumno.email.match(this.email_regex)) {
         // Validar contraseña
         if (this.alumno.password.length >= 6) {
+          // Formatear correo
+          const emailFormateado = this.alumno.email.split('@')[0];
           this.mensaje_login = 'Correo y contraseña válidos';
           let navigationExtras: NavigationExtras = {
             state: {
-              user: this.alumno.email,
+              email: emailFormateado,
               password: this.alumno.password
             },
           };
           this.cambiarSpinner();
           setTimeout(() => {
-            this.router.navigate(['/home'], navigationExtras);
+            this.router.navigate(['/inicio'], navigationExtras);
             this.cambiarSpinner();
             
           }, 2500);
