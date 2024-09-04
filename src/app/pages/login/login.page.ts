@@ -1,10 +1,8 @@
-/*
-  * Importaciones
-  */
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
 import { AlertController } from '@ionic/angular';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -12,32 +10,24 @@ import { AlertController } from '@ionic/angular';
 })
 export class LoginPage implements OnInit {
 
-  //Variables
   alumno = {
     email: '',
     password: ''
   };
-  // Mensaje
   mensaje_login = '';
-  // Spinner
   spinner = false;
 
   email_regex = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   recordarPassword = false;
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
-  
-  // Constructor
   constructor(private router: Router, private AlertController: AlertController) {}
-  
-  
-  // Funcion para mostrar alerta de error
+
   async presentAlert_Email() {
     const alert = await this.AlertController.create({
-      cssClass: '.alerta-login',
+      cssClass: 'alerta-login',
       header: 'Error',
       message: 'Correo ingresado no válido y/o no registrado.',
       buttons: ['Aceptar'],
@@ -48,59 +38,52 @@ export class LoginPage implements OnInit {
 
   async presentAlert_Password() {
     const alert = await this.AlertController.create({
-      cssClass: '.alerta-login',
+      cssClass: 'alerta-login',
       header: 'Error',
-      message: 'Contraseña ingresada no valida y/o erróneo.',
+      message: 'Contraseña ingresada no válida y/o errónea.',
       buttons: ['Aceptar'],
       backdropDismiss: false
     });
     await alert.present();
   }
-  // 
-  
-  // Spinner
-    cambiarSpinner() {
-      this.spinner = !this.spinner;
-    }
 
-    validarLogin() {
-      // Validar correo con expresión regular
+  cambiarSpinner(estado: boolean) {
+    this.spinner = estado;
+  }
+
+  validarLogin() {
+    this.cambiarSpinner(true);
+
+    setTimeout(() => {
       if (this.alumno.email.match(this.email_regex)) {
-        // Validar contraseña
         if (this.alumno.password.length >= 6) {
-          // Formatear correo
           const emailFormateado = this.alumno.email.split('@')[0];
           this.mensaje_login = 'Correo y contraseña válidos';
+
           let navigationExtras: NavigationExtras = {
             state: {
               email: emailFormateado,
               password: this.alumno.password
             },
           };
-          this.cambiarSpinner();
+
           setTimeout(() => {
             this.router.navigate(['/inicio'], navigationExtras);
-            this.cambiarSpinner();
-            
-          }, 2500);
-          
+            this.cambiarSpinner(false);
+          }, 1000);
+
         } else {
+          this.cambiarSpinner(false);
           setTimeout(() => {
             this.presentAlert_Password();
-          }, 1500);
+          }, 500);
         }
       } else {
+        this.cambiarSpinner(false);
         setTimeout(() => {
           this.presentAlert_Email();
-        }, 1500);
-        }
-      } 
-
-      
-    
-
-
-
+        }, 500);
+      }
+    }, 100);
   }
-
-  
+}

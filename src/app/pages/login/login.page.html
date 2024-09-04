@@ -28,16 +28,11 @@
         <ion-text class="forgot-password-text">
           <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
         </ion-text>
-
       </ion-card-content>
     </ion-card>
   </div>
-  <div *ngIf="spinner">
-    <ion-item id="carga">
-      <ion-label>Cargando</ion-label>
-    </ion-item>
-    <ion-item id="carga">
-      <mat-spinner></mat-spinner>
-    </ion-item>
+
+  <div *ngIf="spinner" id="spinner-container">
+    <ion-spinner name="circular"></ion-spinner>
   </div>
 </ion-content>
