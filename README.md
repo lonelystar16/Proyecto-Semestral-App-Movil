@@ -39,3 +39,6 @@ Se puede instalar con el siguiente comando:
 - Ionic CLI (versión 6.x o superior)
 ##
     npm install -g @ionic/cli
+##
+    npm install
+    ionic serve
