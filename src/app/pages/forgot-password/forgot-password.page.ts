@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-forgot-password',
   templateUrl: './forgot-password.page.html',
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-  // Objeto que almacena los datos del formulario de recuperación de contraseña
   reset = {
     first_password: '',
     second_password: ''
@@ -15,8 +16,7 @@ export class ForgotPasswordPage implements OnInit {
   ngOnInit() {
   }
 
-
-  constructor(private AlertController: AlertController) { }
+  constructor(private AlertController: AlertController, private router: Router) { }
 
   async presentAlert_PasswordRecovery() {
     const alert = await this.AlertController.create({
@@ -40,7 +40,6 @@ export class ForgotPasswordPage implements OnInit {
     await alert.present();
   }
 
-  // Función para mostrar que las contraseñas se han cambiado correctamente
   async validatePasswordRecovery() {
     const alert = await this.AlertController.create({
       cssClass: 'alerta-password-recovery',
@@ -52,31 +51,19 @@ export class ForgotPasswordPage implements OnInit {
     await alert.present();
   }
 
-
-
-  // Validar que las contraseñas sean iguales
-  // Validar de que si ambos campos están vacíos,se muestre el mensaje de error
   validatePassword() {
     if (this.reset.first_password === this.reset.second_password) {
       if (this.reset.first_password === '' && this.reset.second_password === '') {
         this.presentAlert_PasswordRecoveryEmpty();
       } else {
         this.validatePasswordRecovery();
-      }     
+      }     
     } else {
       this.presentAlert_PasswordRecovery();
     }
   }
 
-
-
-
-
-
-
-
-
-
-
-
+  goToLoginPage() {
+    this.router.navigateByUrl('/login', { skipLocationChange: true }); 
+  }
 }
