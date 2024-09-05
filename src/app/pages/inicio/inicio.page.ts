@@ -13,7 +13,9 @@ export class InicioPage implements OnInit {
     const state = navegacion?.extras.state as {
       email: '';
     };
-    this.email = state.email;
+    if (state) {
+      this.email = state.email;
+    }
   }
 
   ngOnInit() {
