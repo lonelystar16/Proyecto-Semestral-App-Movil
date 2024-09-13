@@ -26,7 +26,7 @@
         <ion-button expand="block" color="secondary" (click)="validarLogin()">Iniciar Sesión</ion-button>
 
         <ion-text class="forgot-password-text">
-          <a href="/forgot-password">¿Olvidaste tu contraseña?</a>
+          <a [routerLink]="['/forgot-password']">¿Olvidaste tu contraseña?</a>
         </ion-text>
       </ion-card-content>
     </ion-card>
