@@ -1,3 +1,4 @@
+import { AuthenticatorService } from './../../Servicios/authenticator.service';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NavigationExtras } from '@angular/router';
@@ -21,9 +22,9 @@ export class LoginPage implements OnInit {
 
   recordarPassword = false;
 
-  ngOnInit() {}
+  ngOnInit() { }
 
-  constructor(private router: Router, private AlertController: AlertController) {}
+  constructor(private router: Router, private AlertController: AlertController, private AuthenticatorService: AuthenticatorService) { }
 
   async presentAlert_Email() {
     const alert = await this.AlertController.create({
@@ -47,6 +48,19 @@ export class LoginPage implements OnInit {
     await alert.present();
   }
 
+  async presentAlert_Autenticacion(titulo: string) {
+    const alert = await this.AlertController.create({
+      cssClass: 'alerta-login',
+      header: titulo,
+      message: 'Correo y/o contraseña no válidos.',
+      buttons: ['Aceptar'],
+      backdropDismiss: false
+    });
+    await alert.present();
+  }
+
+
+
   cambiarSpinner(estado: boolean) {
     this.spinner = estado;
   }
@@ -58,20 +72,28 @@ export class LoginPage implements OnInit {
       if (this.alumno.email.match(this.email_regex)) {
         if (this.alumno.password.length >= 6) {
           const emailFormateado = this.alumno.email.split('@')[0];
-          this.mensaje_login = 'Correo y contraseña válidos';
 
-          let navigationExtras: NavigationExtras = {
-            state: {
-              email: emailFormateado,
-              password: this.alumno.password
-            },
-          };
+          // Llama al servicio de autenticación
+          if (this.AuthenticatorService.login(emailFormateado, this.alumno.password)) {
+            this.mensaje_login = 'Correo y contraseña válidos';
 
-          setTimeout(() => {
-            this.router.navigate(['/inicio'], navigationExtras);
+            let navigationExtras: NavigationExtras = {
+              state: {
+                email: emailFormateado,
+                password: this.alumno.password,
+              },
+            };
+
+            setTimeout(() => {
+              this.router.navigate(['/inicio'], navigationExtras);
+              this.cambiarSpinner(false);
+            }, 1000);
+          } else {
             this.cambiarSpinner(false);
-          }, 1000);
-
+            setTimeout(() => {
+              this.presentAlert_Autenticacion('Error de autenticación');
+            }, 500);
+          }
         } else {
           this.cambiarSpinner(false);
           setTimeout(() => {
@@ -87,3 +109,4 @@ export class LoginPage implements OnInit {
     }, 100);
   }
 }
+
