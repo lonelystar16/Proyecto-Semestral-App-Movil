@@ -23,10 +23,19 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
+  
+  {
+    path: 'clima',
+    loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
+  },
+  
+  // ! ANTES DE GENERAR CUALQUIER RUTA SE DEBE COLOCAR ANTES DEL PATH DE ERROR
   {
     path: '**',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   },
+  
+
 
 
 ];
