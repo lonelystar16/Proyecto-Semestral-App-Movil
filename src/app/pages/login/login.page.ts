@@ -18,13 +18,12 @@ export class LoginPage implements OnInit {
   mensaje_login = '';
   spinner = false;
 
-  email_regex = '^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$';
 
   recordarPassword = false;
 
   ngOnInit() { }
 
-  constructor(private router: Router, private AlertController: AlertController, private AuthenticatorService: AuthenticatorService) { }
+  constructor(private router: Router, private AlertController: AlertController, private auth: AuthenticatorService) { }
 
   async presentAlert_Email() {
     const alert = await this.AlertController.create({
@@ -64,49 +63,48 @@ export class LoginPage implements OnInit {
   cambiarSpinner(estado: boolean) {
     this.spinner = estado;
   }
-
-  validarLogin() {
+  // * Funcion para validar el login
+  
+  async validarLogin() {
     this.cambiarSpinner(true);
-
-    setTimeout(() => {
-      if (this.alumno.email.match(this.email_regex)) {
-        if (this.alumno.password.length >= 6) {
-          const emailFormateado = this.alumno.email.split('@')[0];
-
-          // Llama al servicio de autenticación
-          if (this.AuthenticatorService.login(emailFormateado, this.alumno.password)) {
-            this.mensaje_login = 'Correo y contraseña válidos';
-
-            let navigationExtras: NavigationExtras = {
-              state: {
-                email: emailFormateado,
-                password: this.alumno.password,
-              },
-            };
-
-            setTimeout(() => {
-              this.router.navigate(['/inicio'], navigationExtras);
-              this.cambiarSpinner(false);
-            }, 1000);
-          } else {
-            this.cambiarSpinner(false);
-            setTimeout(() => {
-              this.presentAlert_Autenticacion('Error de autenticación');
-            }, 500);
-          }
-        } else {
-          this.cambiarSpinner(false);
-          setTimeout(() => {
-            this.presentAlert_Password();
-          }, 500);
-        }
-      } else {
-        this.cambiarSpinner(false);
-        setTimeout(() => {
-          this.presentAlert_Email();
-        }, 500);
-      }
-    }, 100);
+    
+    // Expresión regular para validar el formato del correo
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+  
+    if (this.alumno.email === '' || this.alumno.password === '') {
+      // Invocar alerta de campos vacíos
+      await this.presentAlert_Autenticacion('Error');
+      this.cambiarSpinner(false);
+      return;
+    }
+  
+    // Validar el formato del correo con la expresión regular
+    if (!emailPattern.test(this.alumno.email)) {
+      // Invocar alerta de formato de correo inválido
+      await this.presentAlert_Autenticacion('Correo no válido');
+      this.cambiarSpinner(false);
+      return;
+    }
+  
+    const login = await this.auth.loginBD(this.alumno.email, this.alumno.password);
+    if (login) {
+      // Extraer la parte antes del símbolo "@"
+      const emailSinDominio = this.alumno.email.split('@')[0];
+  
+      let navigationExtras: NavigationExtras = {
+        state: {
+          email: emailSinDominio, // Pasar solo la parte antes de "@"
+          password: this.alumno.password
+        },
+      };
+      this.router.navigate(['/inicio'], navigationExtras);
+    } else {
+      await this.presentAlert_Autenticacion('Error');
+    }
+    
+    this.cambiarSpinner(false);
   }
-}
+  
+  
 
+}
