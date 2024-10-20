@@ -1,27 +1,66 @@
 import { Injectable } from '@angular/core';
-
+import { StorageService } from './storage.service';
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthenticatorService {
-  
-  // * Generamos una variable boolean para rectificar el actual estado de conexion con el autenticador
-  connectionStatus: boolean = false;
-  constructor() { }
-  // * Generamos funcion para validar correo y contraseña
-  // * Si equivale a los datos configurados entregará un true sino un false
-  login(email: string, password: string): boolean {
-    if (email === 'ferna.munozp' && password === '123456') {
-      this.connectionStatus = true;
-      return true;
-    }
-    this.connectionStatus = false;
-    return false;
 
-  } 
+  connectionStatus: boolean = false;
+  
+  constructor(private storage: StorageService ) {
+    
+  }
+    
+  
+  loginBD(alumno: string, password: string): Promise<boolean> {
+    return this.storage.get(alumno)
+    .then((res) => {
+      // Si funciona me devuelve el objeto completo
+      if (res.password == password) {
+        this.connectionStatus = true;
+        return true;
+        
+      } else {
+        return false;
+      }
+    })
+    .catch((error) => {
+      console.error('Error al buscar usuario:', error);
+      return false;
+    });
+  }
+  
+  
+
 
   // * Funcion para obtener el estado de la conexion
-  isAuthenticaded(): boolean {
+  isConected(): boolean {
     return this.connectionStatus;
   }
+
+  // * Funcion para cerrar sesion
+  logout() {
+    this.connectionStatus = false;
+  }
+
+  async registrar(alumno: any): Promise<boolean> {
+    // set (llave, valor)
+    return this.storage.set(alumno.email, alumno)
+    .then((res) => {
+      if (res != null) {
+        return true;
+      } else {
+        return false;
+      }
+    })
+    .catch((error) => {
+      console.error('Error al registrar usuario:', error);
+      return false;
+    });
+  }
+
+
+
+
+
 }
