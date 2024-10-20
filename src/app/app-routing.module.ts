@@ -25,8 +25,8 @@ const routes: Routes = [
   },
   
   {
-    path: 'clima',
-    loadChildren: () => import('./pages/clima/clima.module').then( m => m.ClimaPageModule)
+    path: 'registro',
+    loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
   
   // ! ANTES DE GENERAR CUALQUIER RUTA SE DEBE COLOCAR ANTES DEL PATH DE ERROR
@@ -34,6 +34,8 @@ const routes: Routes = [
     path: '**',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   },
+  
+
   
 
 
