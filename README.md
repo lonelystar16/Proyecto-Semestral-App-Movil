@@ -42,3 +42,6 @@ Se puede instalar con el siguiente comando:
 ##
     npm install
     ionic serve
+## Iniciar JSON Server
+    json-server --watch db.json --port 3001
+
