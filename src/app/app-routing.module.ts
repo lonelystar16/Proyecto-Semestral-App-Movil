@@ -30,12 +30,22 @@ const routes: Routes = [
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
+
+  {
+    path: 'controlador-api',
+    loadChildren: () => import('./pages/Admin/controlador-api/controlador-api.module').then( m => m.ControladorApiPageModule)
+  },
+
+
+
   
   // ! ANTES DE GENERAR CUALQUIER RUTA SE DEBE COLOCAR ANTES DEL PATH DE ERROR
   {
     path: '**',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   },
+  
+
   
 
   
