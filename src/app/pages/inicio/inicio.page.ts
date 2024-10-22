@@ -14,32 +14,24 @@ export class InicioPage implements OnInit {
   constructor(private router: Router,
               private auth: AuthenticatorService
   ) {
-    
     const navegacion = this.router.getCurrentNavigation();
     const state = navegacion?.extras.state as {
-    
       email: '';
-    
     };
     if (state) {
       this.email = state.email;
     }
   }
 
+  irAEncuentraViajes() {
+    this.router.navigate(['/encuentra-viajes']); 
+  }
 
-
-
-
-  logout(){
+  logout() {
     this.auth.logout();
     this.router.navigate(['/login']);
   }
-
-
-
-
-
-
+  
   ngOnInit() {
   }
 

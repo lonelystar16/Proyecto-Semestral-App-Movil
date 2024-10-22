@@ -4,10 +4,6 @@ import { authGuard } from './Servicios/auth.guard';
 
 const routes: Routes = [
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
     path: '',
     redirectTo: 'login',
     pathMatch: 'full'
@@ -25,33 +21,22 @@ const routes: Routes = [
     path: 'forgot-password',
     loadChildren: () => import('./pages/forgot-password/forgot-password.module').then( m => m.ForgotPasswordPageModule)
   },
-  
   {
     path: 'registro',
     loadChildren: () => import('./pages/registro/registro.module').then( m => m.RegistroPageModule)
   },
-
   {
     path: 'controlador-api',
     loadChildren: () => import('./pages/Admin/controlador-api/controlador-api.module').then( m => m.ControladorApiPageModule)
   },
-
-
-
-  
-  // ! ANTES DE GENERAR CUALQUIER RUTA SE DEBE COLOCAR ANTES DEL PATH DE ERROR
+  {
+    path: 'encuentra-viajes',
+    loadChildren: () => import('./pages/encuentra-viajes/encuentra-viajes.module').then( m => m.EncuentraViajesPageModule)
+  },
   {
     path: '**',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
-  },
-  
-
-  
-
-  
-
-
-
+  }
 ];
 
 @NgModule({

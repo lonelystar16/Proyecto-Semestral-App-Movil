@@ -87,34 +87,18 @@ ion-input {
   font-size: 14px;
 }
 
-ion-button {
-  margin-top: 15px;
-}
 
-.forgot-password-text {
+.forgot-password-text, .register-link {
   display: block;
   text-align: center;
-  margin-top: 15px;
+  margin-top: 10px;
 }
 
-.forgot-password-text a {
+.forgot-password-text, .register-link a {
   color: var(--ion-color-primary);
   font-size: 0.9em;
 }
 
-.forgot-password-text a:hover {
+.forgot-password-text, .register-link a:hover {
   text-decoration: underline;
-}
-
-#spinner-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  background: rgba(255, 255, 255, 0.8);
-  z-index: 1000;
 }
