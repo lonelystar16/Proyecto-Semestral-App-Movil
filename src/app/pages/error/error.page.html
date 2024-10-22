@@ -1,9 +1,12 @@
 <ion-content class="ion-padding">
   <div class="error-container">
-    <ion-icon name="alert-circle-outline" class="error-icon"></ion-icon>
-    <h1>Error</h1>
-    <p>{{ errorMessage }}</p>
-    <ion-button expand="block" (click)="devolverInicio()">Volver</ion-button>
-    <ion-button expand="block" fill="clear" (click)="devolverLogin()">Ir al inicio</ion-button>
+    <ion-icon name="close-outline" class="close-icon" (click)="devolverInicio()"></ion-icon>
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">¡Página no encontrada!</h2>
+    <img src="assets/auto-chocado.png" alt="Auto chocado" class="error-image">
+    <p class="error-message">
+      Lo sentimos, la página que solicitaste no se pudo encontrar. ¡Por favor, vuelve al inicio!
+    </p>
+    <ion-button expand="block" color="warning" (click)="devolverInicio()">VOLVER AL INICIO</ion-button>
   </div>
 </ion-content>
