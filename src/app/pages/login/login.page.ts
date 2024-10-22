@@ -86,6 +86,7 @@ export class LoginPage implements OnInit {
       return;
     }
   
+    // Llamada al servicio de autenticación
     const login = await this.auth.loginBD(this.alumno.email, this.alumno.password);
     if (login) {
       // Extraer la parte antes del símbolo "@"

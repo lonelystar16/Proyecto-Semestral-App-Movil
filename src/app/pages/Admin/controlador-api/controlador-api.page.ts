@@ -11,6 +11,7 @@ export class ControladorApiPage implements OnInit {
   alumnoSeleccionado: any = null;
   nuevoAlumno: any = { nombre_usuario: '', email: '', password: '' };
   mostrarFormulario: boolean = false;
+  mostrarFormularioEditar: boolean = false;
   
   constructor(
     private api: ApiService
@@ -31,7 +32,9 @@ export class ControladorApiPage implements OnInit {
   }
 
   editarAlumno(alumno: any) {
-    this.alumnoSeleccionado = { ...alumno };  // Clonamos el objeto alumno para evitar modificar el original directamente
+    this.alumnoSeleccionado = { ...alumno };
+    this.mostrarFormularioEditar = true;
+    
   }
 
 
@@ -40,6 +43,7 @@ export class ControladorApiPage implements OnInit {
     this.api.updateAlumno(id, alumnoData).subscribe(data => {
       console.log('Alumno modificado:', data);
       this.cargarAlumnos();
+      this.mostrarFormularioEditar = false;
       this.alumnoSeleccionado = null;
     }, error => {
       console.log("Error en la petición", error);

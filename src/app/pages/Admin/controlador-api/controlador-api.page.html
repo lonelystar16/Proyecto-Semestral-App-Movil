@@ -47,6 +47,25 @@
         <ion-button (click)="crearAlumno()" expand="block">Agregar Alumno</ion-button>
       </div>
 
+      <div *ngIf="mostrarFormularioEditar">
+        <h2>Editar Alumno</h2>
+        <ion-item>
+          <ion-label position="floating">Nombre Usuario</ion-label>
+          <ion-input [(ngModel)]="alumnoSeleccionado.nombre_usuario"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Correo Usuario</ion-label>
+          <ion-input [(ngModel)]="alumnoSeleccionado.email" type="email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="floating">Contraseña Usuario</ion-label>
+          <ion-input [(ngModel)]="alumnoSeleccionado.password" type="string"></ion-input>
+        </ion-item>
+        <ion-button (click)="modificarAlumno(alumnoSeleccionado.id, alumnoSeleccionado)" expand="block">Actualizar Alumno</ion-button>
+      </div>
+
+
+
       <ion-grid fixed>
         <ion-row>
           <ion-col><strong>Nombre Usuario</strong></ion-col>
@@ -61,7 +80,7 @@
           <ion-col>{{alumno.nombre_usuario}}</ion-col>
           <ion-col> {{alumno.email}} </ion-col>
           <ion-col> {{alumno.password}} </ion-col>
-          <ion-col (click)="editarAlumno(alumno.id)">
+          <ion-col (click)="editarAlumno(alumno)">
             <ion-button fill="outline" size="small">
               Modificar
             </ion-button>

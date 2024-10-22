@@ -1,28 +1,16 @@
 {
   "alumnos": [
     {
-      "nombre_usuario": "laura.garcia.1",
-      "email": "nombre.apellido@dominio.net",
-      "password": "M1c0ntr4s3ñ4",
-      "id": "880f"
-    },
-    {
-      "nombre_usuario": "pedro.gomez",
-      "email": "info@miempresa.org",
-      "password": "Cl4v3s3cr3t4",
-      "id": "ea03"
-    },
-    {
       "id": "29ae",
       "nombre_usuario": "Fernando Muñoz",
-      "email": "fernandobeatles31@gmail.com",
+      "email": "fernandobeatles13@gmail.com",
       "password": "okaokaokaok"
     },
     {
-      "id": "3acd",
-      "nombre_usuario": "test111",
-      "email": "correo@example.cl",
-      "password": "qwerty"
+      "id": "0d76",
+      "nombre_usuario": "aidencaaa",
+      "email": "example.ex@domain.cl",
+      "password": "holaquehace"
     }
   ]
 }

@@ -31,7 +31,7 @@ export class ApiService {
     return this.http.delete(this.apiUrl + '/alumnos/' + id);
   }
 
-  // * Registro de usuario por parte del usuario
+  
 
   
 

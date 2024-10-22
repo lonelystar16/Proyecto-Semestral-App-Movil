@@ -1,34 +1,39 @@
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
+import { HttpClient } from '@angular/common/http';
+import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthenticatorService {
 
   connectionStatus: boolean = false;
-  
-  constructor(private storage: StorageService ) {
+  private apiUrl = 'http://localhost:3001/alumnos';
+  constructor(
+    private storage: StorageService,
+    private http: HttpClient
+  ) {
     
   }
     
   
-  loginBD(alumno: string, password: string): Promise<boolean> {
-    return this.storage.get(alumno)
-    .then((res) => {
-      // Si funciona me devuelve el objeto completo
-      if (res.password == password) {
-        this.connectionStatus = true;
-        return true;
-        
-      } else {
+  async loginBD(email: string, password: string): Promise<boolean> {
+    return this.http.get<any[]>(`${this.apiUrl}/alumnos?email=${email}`)
+      .toPromise()
+      .then((res) => {
+        if (res && res.length > 0 && res[0].password === password) {
+          return true;  // Usuario y contraseña correctos
+        } else {
+          return false; // Credenciales incorrectas
+        }
+      })
+      .catch((error) => {
+        console.error('Error al autenticar:', error);
         return false;
-      }
-    })
-    .catch((error) => {
-      console.error('Error al buscar usuario:', error);
-      return false;
-    });
+      });
   }
+  
   
   
 
@@ -43,20 +48,20 @@ export class AuthenticatorService {
     this.connectionStatus = false;
   }
 
-  async registrar(alumno: any): Promise<boolean> {
-    // set (llave, valor)
-    return this.storage.set(alumno.email, alumno)
-    .then((res) => {
-      if (res != null) {
-        return true;
-      } else {
-        return false;
-      }
-    })
-    .catch((error) => {
-      console.error('Error al registrar usuario:', error);
-      return false;
-    });
+  registrar(alumno: any): Observable<boolean> {
+    return this.http.post(this.apiUrl, alumno).pipe(
+      map((res) => {
+        if (res) {
+          return true;
+        } else {
+          return false;
+        }
+      }),
+      catchError((error) => {
+        console.error('Error al registrar usuario:', error);
+        return [false];
+      })
+    );
   }
 
 
