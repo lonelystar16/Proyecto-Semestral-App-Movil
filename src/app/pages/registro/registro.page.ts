@@ -68,4 +68,8 @@ export class RegistroPage implements OnInit {
     await toast.present();
   }
 
+  goToLoginPage() {
+    this.router.navigateByUrl('/login', { skipLocationChange: true }); 
+  }
+
 }

@@ -1,6 +1,13 @@
 ion-content {
     --background: #eeeeee;
   }
+
+  #volver-atras {
+    position: absolute;
+    top: 10px; 
+    left: 10px;
+    --box-shadow: none;
+  }
   
   .header-logo {
     display: flex;
@@ -25,67 +32,69 @@ ion-content {
     flex-direction: column;
     color: white;
     padding: 20px;
-  }
 
-  #app-bar {
-    height: 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    #app-bar {
+        height: 60px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    ion-icon {
+        font-size: 24px;
+        margin-left: -5px;
+    }
+
+    h1 {
+        font-size: 19px;
+        margin-bottom: 5px;
+    }
+
+    p {
+        font-size: 15px;
+        line-height: 1.4;
+    }
   }
   
-  ion-icon {
-    font-size: 24px; 
-    margin-right: 10px; 
-  }
-  
-  h1 {
-    font-size: 19px;
-    margin-bottom: 5px;
-  }
-  
-  p {
-    font-size: 15px;
-    line-height: 1.4;
-  }
-  
-  .wrapper {
+  .wrapper{
     position: absolute;
     top: 26%;
     left: 4%;
     right: 4%;
-  }
-  
-  .form-wrapper {
-    background-color: #ffffff;
-    box-shadow: none;
-    border-radius: 20px;
-    padding: 15px 10px;
-  }
-  
-  ion-item {
-    --background: #efefef;
-    --padding-start: 10px;
-    --highlight-height: 0;
-    --border-width: 0;
-    --padding-top: 0;
-    --min-height: 50px; 
-    margin-bottom: 15px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-  }
-  
-  ion-icon {
-    color: #666666;
-    font-size: 24px;
-    margin-right: 10px;
-  }
-  
-  ion-input {
-    color: #666666;
-    font-size: 14px;
-  }
+
+    .form-wrapper{
+        background-color: #ffff;
+        box-shadow: none;
+        border-radius: 20px;
+        padding: 15px 10px;
+
+        ion-item {
+            --background: #efefef;
+            --padding-start: 10px;
+            --highlight-height: 0;
+            --border-width: 0;
+            --padding-top: 0;
+            --min-height: 40px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+
+            ion-icon {
+                color: #666666;
+                font-size: 18px;
+            }
+
+            ion-input {
+                color: #666666;
+                margin-left: 10px;
+                font-size: 14px;
+            }
+        }
+
+        ion-button {
+            margin-top: 25px;
+        }
+    }
+}
   
   .register-link {
     display: block;
@@ -101,4 +110,5 @@ ion-content {
   .register-link a:hover {
     text-decoration: underline;
   }
+
   

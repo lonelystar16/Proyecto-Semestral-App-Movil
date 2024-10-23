@@ -1,7 +1,9 @@
 <ion-content>
   <div id="header">
     <div id="app-bar">
-      <div></div>
+      <ion-button id="volver-atras" (click)="goToLoginPage()">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
     </div>
     
     <div class="header-logo">
@@ -19,8 +21,6 @@
             <ion-icon name="person-outline"></ion-icon>
             <ion-input
               [(ngModel)]="alumno.nombre_usuario"
-              label="Usuario"
-              labelPlacement="floating"
               placeholder="Ingrese su usuario"
             ></ion-input>
           </ion-item>
