@@ -35,7 +35,10 @@
     </ion-card>
   </div>
 
-  <div *ngIf="spinner" id="spinner-container">
-    <ion-spinner name="circular"></ion-spinner>
+  <!-- Overlay con el spinner -->
+  <div *ngIf="spinner" class="spinner-overlay">
+    <div class="spinner-container">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
   </div>
 </ion-content>
