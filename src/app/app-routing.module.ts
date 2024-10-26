@@ -31,7 +31,8 @@ const routes: Routes = [
   },
   {
     path: 'encuentra-viajes',
-    loadChildren: () => import('./pages/encuentra-viajes/encuentra-viajes.module').then( m => m.EncuentraViajesPageModule)
+    loadChildren: () => import('./pages/encuentra-viajes/encuentra-viajes.module').then( m => m.EncuentraViajesPageModule),
+    canActivate: [authGuard]
   },
   {
     path: '**',

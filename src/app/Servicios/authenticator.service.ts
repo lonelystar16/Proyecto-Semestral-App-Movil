@@ -1,8 +1,10 @@
+// authenticator.service.ts
 import { Injectable } from '@angular/core';
 import { StorageService } from './storage.service';
 import { HttpClient } from '@angular/common/http';
 import { map, catchError } from 'rxjs/operators';
 import { Observable } from 'rxjs';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -10,42 +12,43 @@ export class AuthenticatorService {
 
   connectionStatus: boolean = false;
   private apiUrl = 'http://localhost:3001/alumnos';
+
   constructor(
     private storage: StorageService,
     private http: HttpClient
-  ) {
-    
-  }
-    
-  
-  async loginBD(email: string, password: string): Promise<boolean> {
-    return this.http.get<any[]>(`${this.apiUrl}/alumnos?email=${email}`)
-      .toPromise()
-      .then((res) => {
-        if (res && res.length > 0 && res[0].password === password) {
-          return true;  // Usuario y contraseña correctos
+  ) { }
+
+  loginBD(email: string, password: string): Observable<{ success: boolean, nombre_usuario?: string }> {
+    return this.http.get<any[]>(`${this.apiUrl}?email=${email}&password=${password}`).pipe(
+      map(users => {
+        if (users.length > 0) {
+          this.connectionStatus = true; // Actualizar el estado de conexión
+          return { success: true, nombre_usuario: users[0].nombre_usuario };
         } else {
-          return false; // Credenciales incorrectas
+          this.connectionStatus = false;
+          return { success: false };
         }
+      }),
+      catchError(error => {
+        this.connectionStatus = false;
+        console.error('Error en la conexión con JSON Server:', error);
+        return [{ success: false }];
       })
-      .catch((error) => {
-        console.error('Error al autenticar:', error);
-        return false;
-      });
+    );
   }
-  
-  
-  
 
-
-  // * Funcion para obtener el estado de la conexion
   isConected(): boolean {
+    console.log('Estado de conexión:', this.connectionStatus);
     return this.connectionStatus;
   }
 
-  // * Funcion para cerrar sesion
   logout() {
     this.connectionStatus = false;
+  }
+
+  limpiarDatos() {
+    localStorage.removeItem('email');
+    localStorage.removeItem('password');
   }
 
   registrar(alumno: any): Observable<boolean> {
@@ -63,9 +66,4 @@ export class AuthenticatorService {
       })
     );
   }
-
-
-
-
-
 }

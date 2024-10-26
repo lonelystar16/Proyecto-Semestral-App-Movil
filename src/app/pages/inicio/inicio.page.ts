@@ -1,3 +1,4 @@
+// inicio.page.ts
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthenticatorService } from 'src/app/Servicios/authenticator.service';
@@ -10,16 +11,19 @@ import { AuthenticatorService } from 'src/app/Servicios/authenticator.service';
 export class InicioPage implements OnInit {
   
   email = '';
+  nombre_usuario = '';
 
   constructor(private router: Router,
-              private auth: AuthenticatorService
-  ) {
+              private auth: AuthenticatorService) {
     const navegacion = this.router.getCurrentNavigation();
     const state = navegacion?.extras.state as {
-      email: '';
+      email: string;
+      nombre_usuario: string;
     };
     if (state) {
       this.email = state.email;
+      this.nombre_usuario = state.nombre_usuario;
+      console.log('Datos recibidos en InicioPage:', state); // Imprimir los datos recibidos
     }
   }
 

@@ -1,15 +1,13 @@
+// auth.guard.ts
 import { CanActivateFn, Router } from '@angular/router';
 import { AuthenticatorService } from './authenticator.service';
 import { inject } from '@angular/core';
 
 export const authGuard: CanActivateFn = (route, state) => {
-  /* 
-    * La definicion inject nos permite generar el objeto de la clase sin
-    * la necesidad de aplicar un constructor completo.
-  */
-
   const authService = inject(AuthenticatorService);
   const router = inject(Router);
+
+  console.log('Estado de autenticación:', authService.isConected());
 
   if (authService.isConected()) {
     return true;
@@ -17,6 +15,4 @@ export const authGuard: CanActivateFn = (route, state) => {
     router.navigate(['/login']);
     return false;
   }
-
-
 };
