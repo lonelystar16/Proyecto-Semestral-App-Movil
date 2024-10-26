@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { ApiService } from 'src/app/Servicios/api.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -10,13 +11,17 @@ import { Router } from '@angular/router';
 export class ForgotPasswordPage implements OnInit {
   reset = {
     first_password: '',
-    second_password: ''
+    second_password: '',
+    email: ''
   };
 
   ngOnInit() {
   }
 
-  constructor(private AlertController: AlertController, private router: Router) { }
+  constructor(
+    private AlertController: AlertController,
+    private router: Router,
+    private api: ApiService) { }
 
   async presentAlert_PasswordRecovery() {
     const alert = await this.AlertController.create({
@@ -33,7 +38,18 @@ export class ForgotPasswordPage implements OnInit {
     const alert = await this.AlertController.create({
       cssClass: 'alerta-password-recovery',
       header: 'Error',
-      message: 'Ambos campos están vacíos.',
+      message: 'Todos los campos están vacíos.',
+      buttons: ['Aceptar'],
+      backdropDismiss: false
+    });
+    await alert.present();
+  }
+
+  async presentAlert_EmailNotFound() {
+    const alert = await this.AlertController.create({
+      cssClass: 'alerta-password-recovery',
+      header: 'Error',
+      message: 'Correo electrónico no encontrado.',
       buttons: ['Aceptar'],
       backdropDismiss: false
     });
@@ -52,15 +68,28 @@ export class ForgotPasswordPage implements OnInit {
   }
 
   validatePassword() {
-    if (this.reset.first_password === this.reset.second_password) {
-      if (this.reset.first_password === '' && this.reset.second_password === '') {
-        this.presentAlert_PasswordRecoveryEmpty();
-      } else {
-        this.validatePasswordRecovery();
-      }     
-    } else {
-      this.presentAlert_PasswordRecovery();
+    if (this.reset.email === '' || this.reset.first_password === '' || this.reset.second_password === '') {
+      this.presentAlert_PasswordRecoveryEmpty();
+      return;
     }
+
+    if (this.reset.first_password !== this.reset.second_password) {
+      this.presentAlert_PasswordRecovery();
+      return;
+    }
+
+    this.api.getAlumnos().subscribe(alumnos => {
+      const alumno = alumnos.find((alumno: any) => alumno.email === this.reset.email);
+      if (alumno) {
+        // Actualizar la contraseña del alumno
+        alumno.password = this.reset.first_password;
+        this.api.updateAlumno(alumno.id, alumno).subscribe(() => {
+          this.validatePasswordRecovery();
+        });
+      } else {
+        this.presentAlert_EmailNotFound();
+      }
+    });
   }
 
   goToLoginPage() {
