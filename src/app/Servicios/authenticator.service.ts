@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class AuthenticatorService {
 
   connectionStatus: boolean = false;
-  private apiUrl = 'http://localhost:3001/alumnos';
+  private apiUrl = 'https://xt6j2jbg-3001.brs.devtunnels.ms/alumnos';
 
   constructor(
     private storage: StorageService,

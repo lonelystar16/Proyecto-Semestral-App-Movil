@@ -12,7 +12,14 @@ import { HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, IonicStorageModule.forRoot(), HttpClientModule],
+  imports:
+  [BrowserModule, IonicModule.forRoot({
+    mode: 'md', // Modo Material Design para Android
+    animated: true, // Animaciones activadas
+  }),
+    AppRoutingModule,
+    IonicStorageModule.forRoot(),
+    HttpClientModule],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }, provideAnimationsAsync(), provideHttpClient()],
   bootstrap: [AppComponent],
 })

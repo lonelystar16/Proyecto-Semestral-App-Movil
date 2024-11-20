@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
 
-  private apiUrl = 'http://localhost:3001' // URL del JSON Server
+  private apiUrl = 'https://xt6j2jbg-3001.brs.devtunnels.ms/' // URL del JSON Server
 
   constructor(private http: HttpClient) {}
 

@@ -17,7 +17,30 @@
       "nombre_usuario": "shauni",
       "email": "ferna.munozp@duocuc.cl",
       "password": "12345678"
+    },
+    {
+      "id": "e4f4",
+      "nombre_usuario": "aidenshauni",
+      "email": "elpepe@gmail.com",
+      "password": "123446"
+    },
+    {
+      "id": "39f6",
+      "nombre_usuario": "elpepom",
+      "email": "elpepe1@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "d075",
+      "nombre_usuario": "Gabyta",
+      "email": "gaby@gmail.com",
+      "password": "2denoviembre"
+    },
+    {
+      "id": "89ee",
+      "nombre_usuario": "madremia",
+      "email": "madremia@gmail.com",
+      "password": "123456"
     }
   ]
 }
-
