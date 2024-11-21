@@ -11,7 +11,8 @@ import { Observable } from 'rxjs';
 export class AuthenticatorService {
 
   connectionStatus: boolean = false;
-  private apiUrl = 'https://xt6j2jbg-3001.brs.devtunnels.ms/alumnos';
+  // TODO: Revisar en la barra de utilidades de VSCode si el puerto cambia de 3000 a 3001
+  private apiUrl = 'https://xt6j2jbg-3000.brs.devtunnels.ms/alumnos';
 
   constructor(
     private storage: StorageService,

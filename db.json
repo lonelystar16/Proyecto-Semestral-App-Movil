@@ -1,46 +1,16 @@
 {
   "alumnos": [
     {
-      "id": "29ae",
-      "nombre_usuario": "Fernando Muñoz",
-      "email": "fernandobeatles13@gmail.com",
-      "password": "okaokaokaok"
+      "id": "47fa",
+      "nombre_usuario": "aiden",
+      "email": "aidencarinae@gmail.com",
+      "password": "123456"
     },
     {
-      "id": "0d76",
-      "nombre_usuario": "aidencaaa",
-      "email": "example.ex@domain.cl",
-      "password": "holaquehace"
-    },
-    {
-      "id": "ec0f",
+      "id": "aece",
       "nombre_usuario": "shauni",
-      "email": "ferna.munozp@duocuc.cl",
-      "password": "12345678"
-    },
-    {
-      "id": "e4f4",
-      "nombre_usuario": "aidenshauni",
-      "email": "elpepe@gmail.com",
-      "password": "123446"
-    },
-    {
-      "id": "39f6",
-      "nombre_usuario": "elpepom",
-      "email": "elpepe1@gmail.com",
-      "password": "123456"
-    },
-    {
-      "id": "d075",
-      "nombre_usuario": "Gabyta",
-      "email": "gaby@gmail.com",
-      "password": "2denoviembre"
-    },
-    {
-      "id": "89ee",
-      "nombre_usuario": "madremia",
-      "email": "madremia@gmail.com",
-      "password": "123456"
+      "email": "shauni123@gmail.com",
+      "password": "654321"
     }
   ]
 }

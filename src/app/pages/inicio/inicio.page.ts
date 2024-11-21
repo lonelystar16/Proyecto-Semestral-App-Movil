@@ -23,7 +23,7 @@ export class InicioPage implements OnInit {
     if (state) {
       this.email = state.email;
       this.nombre_usuario = state.nombre_usuario;
-      console.log('Datos recibidos en InicioPage:', state); // Imprimir los datos recibidos
+      console.log('Datos recibidos en InicioPage correctamente'); // Imprimir los datos recibidos
     }
   }
 
@@ -37,6 +37,7 @@ export class InicioPage implements OnInit {
   }
   
   ngOnInit() {
+    console.log('ngOnInit InicioPage');
   }
 
 }

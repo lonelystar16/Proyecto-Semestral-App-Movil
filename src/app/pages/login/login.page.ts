@@ -21,7 +21,10 @@ export class LoginPage implements OnInit {
 
   recordarDatos = false;
 
-  ngOnInit() { }
+  ngOnInit() {
+    // Initialization logic here
+    console.log('LoginPage initialized');
+  }
 
   constructor(
     private router: Router,

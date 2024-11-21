@@ -24,6 +24,7 @@ export class RegistroPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    console.log('ngOnInit Inicializado');
   }
 
   async registrar() {

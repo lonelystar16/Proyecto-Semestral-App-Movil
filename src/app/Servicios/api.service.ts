@@ -5,8 +5,8 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-
-  private apiUrl = 'https://xt6j2jbg-3001.brs.devtunnels.ms/' // URL del JSON Server
+  // TODO: Revisar en la barra de utilidades de VSCode si el puerto cambia de 3000 a 3001
+  private apiUrl = 'https://xt6j2jbg-3000.brs.devtunnels.ms/' // URL del JSON Server
 
   constructor(private http: HttpClient) {}
 
