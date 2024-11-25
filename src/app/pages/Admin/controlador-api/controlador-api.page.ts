@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { ApiService } from 'src/app/Servicios/api.service';
 @Component({
   selector: 'app-controlador-api',
@@ -14,7 +15,8 @@ export class ControladorApiPage implements OnInit {
   mostrarFormularioEditar: boolean = false;
   
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -82,6 +84,9 @@ export class ControladorApiPage implements OnInit {
     });
   }
 
+  redirect_to_home(){
+    this.router.navigate(['/login']);
+  }
 
 
 }

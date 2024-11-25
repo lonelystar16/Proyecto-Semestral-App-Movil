@@ -9,6 +9,9 @@ import { ApiService } from 'src/app/Servicios/api.service';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
+
+  alumnos: any[] = [];
+
   reset = {
     first_password: '',
     second_password: '',
@@ -16,12 +19,34 @@ export class ForgotPasswordPage implements OnInit {
   };
 
   ngOnInit() {
+    console.log('ForgotPasswordPage cargada');
+    this.cargarLista();
   }
 
   constructor(
     private AlertController: AlertController,
     private router: Router,
     private api: ApiService) { }
+
+    cargarLista() {
+      this.api.getAlumnos().subscribe(
+        (data) => {
+          this.alumnos = data;
+          console.log(this.alumnos);
+        },
+        (error) => {
+          console.error('Error en la petición:', error);
+        }
+      )
+    }
+
+
+
+
+
+
+
+
 
   async presentAlert_PasswordRecovery() {
     const alert = await this.AlertController.create({
@@ -78,21 +103,33 @@ export class ForgotPasswordPage implements OnInit {
       return;
     }
 
-    this.api.getAlumnos().subscribe(alumnos => {
-      const alumno = alumnos.find((alumno: any) => alumno.email === this.reset.email);
-      if (alumno) {
-        // Actualizar la contraseña del alumno
-        alumno.password = this.reset.first_password;
-        this.api.updateAlumno(alumno.id, alumno).subscribe(() => {
-          this.validatePasswordRecovery();
-        });
-      } else {
-        this.presentAlert_EmailNotFound();
+    this.api.getAlumnos().subscribe(
+      alumnos => {
+        const alumno = alumnos.find((alumno: any) => alumno.email === this.reset.email);
+        if (alumno) {
+          // Actualizar la contraseña del alumno
+          alumno.password = this.reset.first_password;
+          this.api.updateAlumno(alumno.id, alumno).subscribe(
+            () => {
+              this.validatePasswordRecovery();
+            },
+            error => {
+              console.error('Error actualizando contraseña:', error);
+            }
+          );
+        } else {
+          this.presentAlert_EmailNotFound();
+        }
+      },
+      error => {
+        console.error('Error fetchando alumnos:', error);
       }
-    });
+    );
   }
 
   goToLoginPage() {
     this.router.navigateByUrl('/login', { skipLocationChange: true }); 
   }
+
+
 }

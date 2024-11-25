@@ -1,15 +1,14 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>Mantenedor Usuarios | TeLlevoDuoc</ion-title>
-    <ion-button expand="block" fill="clear" shape="round">
-      <a [routerLink]="['/inicio']"></a>
-    </ion-button>
-  </ion-toolbar>
-</ion-header>
+
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
+      <ion-buttons slot="start">
+        <!-- Botón con ícono de casa -->
+        <ion-button (click)="redirect_to_home()">
+          <ion-icon name="home-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
       <ion-title size="large">Mantenedor Usuarios</ion-title>
     </ion-toolbar>
   </ion-header>
@@ -20,6 +19,7 @@
     <ion-card>
   <ion-card-header>
     <ion-card-title>Mantenedor Usuarios</ion-card-title>
+    <ion-icon name="home-outline"></ion-icon>
   </ion-card-header>
   <ion-card-content>
     <ion-list>
@@ -31,7 +31,7 @@
       </ion-item>
 
       <!-- Formulario para agregar un nuevo alumno, visible solo cuando mostrarFormulario es true -->
-      <div *ngIf="mostrarFormulario">
+      <div *ngIf="mostrarFormulario" class="formulario-container">
         <ion-item>
           <ion-label position="floating">Nombre Usuario</ion-label>
           <ion-input [(ngModel)]="nuevoAlumno.nombre_usuario"></ion-input>
@@ -44,10 +44,10 @@
           <ion-label position="floating">Contraseña Usuario</ion-label>
           <ion-input [(ngModel)]="nuevoAlumno.password" type="password"></ion-input>
         </ion-item>
-        <ion-button (click)="crearAlumno()" expand="block">Agregar Alumno</ion-button>
+        <ion-button (click)="crearAlumno()" expand="block" class="action-button">Agregar Alumno</ion-button>
       </div>
 
-      <div *ngIf="mostrarFormularioEditar">
+      <div *ngIf="mostrarFormularioEditar" class="formulario-container">
         <h2>Editar Alumno</h2>
         <ion-item>
           <ion-label position="floating">Nombre Usuario</ion-label>
@@ -61,7 +61,7 @@
           <ion-label position="floating">Contraseña Usuario</ion-label>
           <ion-input [(ngModel)]="alumnoSeleccionado.password" type="string"></ion-input>
         </ion-item>
-        <ion-button (click)="modificarAlumno(alumnoSeleccionado.id, alumnoSeleccionado)" expand="block">Actualizar Alumno</ion-button>
+        <ion-button class="action-button" (click)="modificarAlumno(alumnoSeleccionado.id, alumnoSeleccionado)" expand="block">Actualizar Alumno</ion-button>
       </div>
 
 
@@ -86,7 +86,7 @@
             </ion-button>
           </ion-col>
           <ion-col (click)="eliminarAlumno(alumno.id)">
-            <ion-button fill="outline" size="small">
+            <ion-button class="delete-button" fill="outline" size="small">
               Eliminar
             </ion-button>
           </ion-col>
