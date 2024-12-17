@@ -7,6 +7,8 @@ import { HomePage } from './home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -14,6 +16,11 @@ import { HomePageRoutingModule } from './home-routing.module';
     IonicModule,
     HomePageRoutingModule
   ],
+<<<<<<< Updated upstream:src/app/home/home.module.ts
   declarations: [HomePage]
+=======
+  declarations: [EncuentraViajesPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
+>>>>>>> Stashed changes:src/app/pages/encuentra-viajes/encuentra-viajes.module.ts
 })
 export class HomePageModule {}

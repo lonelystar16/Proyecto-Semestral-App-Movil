@@ -1,0 +1,20 @@
+capacitor-google-map {
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.logo{
+  max-height: 40px; 
+    width: auto;
+    text-align: center;
+}
+ion-toolbar{
+  background-color: #002641;
+  text-align: center;
+}
+
+.ion-header {
+  --background: #007bff; /* Color de fondo del header /
+  --color: #ffffff; / Color del texto en el header */
+}
