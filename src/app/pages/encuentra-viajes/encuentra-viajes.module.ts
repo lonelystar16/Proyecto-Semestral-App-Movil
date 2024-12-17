@@ -8,6 +8,8 @@ import { EncuentraViajesPageRoutingModule } from './encuentra-viajes-routing.mod
 
 import { EncuentraViajesPage } from './encuentra-viajes.page';
 
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +17,7 @@ import { EncuentraViajesPage } from './encuentra-viajes.page';
     IonicModule,
     EncuentraViajesPageRoutingModule
   ],
-  declarations: [EncuentraViajesPage]
+  declarations: [EncuentraViajesPage],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class EncuentraViajesPageModule {}

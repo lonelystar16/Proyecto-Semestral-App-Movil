@@ -5,13 +5,5 @@
 </ion-header>
 
 <ion-content>
-  <div class="map-container">
-    <div id="map"></div>
-  </div>
-
-  <ion-item>
-    <ion-label>Seleccione inicio y destino en el mapa</ion-label>
-  </ion-item>
-
-  <ion-button expand="block" color="primary" (click)="confirmarViaje()">Confirmar Viaje</ion-button>
+  <capacitor-google-map #map></capacitor-google-map>
 </ion-content>

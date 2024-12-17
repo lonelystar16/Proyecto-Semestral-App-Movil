@@ -5,7 +5,7 @@ import { authGuard } from './Servicios/auth.guard';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'encuentra-viajes',
     pathMatch: 'full'
   },
   {
@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'inicio',
     loadChildren: () => import('./pages/inicio/inicio.module').then( m => m.InicioPageModule),
-    canActivate: [authGuard]
+//    canActivate: [authGuard]
   },
   {
     path: 'forgot-password',
@@ -32,7 +32,7 @@ const routes: Routes = [
   {
     path: 'encuentra-viajes',
     loadChildren: () => import('./pages/encuentra-viajes/encuentra-viajes.module').then( m => m.EncuentraViajesPageModule),
-    canActivate: [authGuard]
+//    canActivate: [authGuard]
   },
   {
     path: '**',
