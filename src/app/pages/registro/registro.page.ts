@@ -3,9 +3,10 @@ import { Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { AuthenticatorService } from 'src/app/Servicios/authenticator.service';
 @Component({
-  selector: 'app-registro',
-  templateUrl: './registro.page.html',
-  styleUrls: ['./registro.page.scss'],
+    selector: 'app-registro',
+    templateUrl: './registro.page.html',
+    styleUrls: ['./registro.page.scss'],
+    standalone: false
 })
 export class RegistroPage implements OnInit {
 

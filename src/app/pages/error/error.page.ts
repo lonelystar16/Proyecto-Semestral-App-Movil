@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-error',
-  templateUrl: './error.page.html',
-  styleUrls: ['./error.page.scss'],
+    selector: 'app-error',
+    templateUrl: './error.page.html',
+    styleUrls: ['./error.page.scss'],
+    standalone: false
 })
 export class ErrorPage implements OnInit {
   errorMessage: string = 'Opps! Algo salió mal. ';

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ApiService } from 'src/app/Servicios/api.service';
 @Component({
-  selector: 'app-controlador-api',
-  templateUrl: './controlador-api.page.html',
-  styleUrls: ['./controlador-api.page.scss'],
+    selector: 'app-controlador-api',
+    templateUrl: './controlador-api.page.html',
+    styleUrls: ['./controlador-api.page.scss'],
+    standalone: false
 })
 export class ControladorApiPage implements OnInit {
   

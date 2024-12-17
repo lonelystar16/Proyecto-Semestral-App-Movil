@@ -4,9 +4,10 @@ import { Router } from '@angular/router';
 import { ApiService } from 'src/app/Servicios/api.service';
 
 @Component({
-  selector: 'app-forgot-password',
-  templateUrl: './forgot-password.page.html',
-  styleUrls: ['./forgot-password.page.scss'],
+    selector: 'app-forgot-password',
+    templateUrl: './forgot-password.page.html',
+    styleUrls: ['./forgot-password.page.scss'],
+    standalone: false
 })
 export class ForgotPasswordPage implements OnInit {
 

@@ -3,9 +3,10 @@ import { GoogleMap } from "@capacitor/google-maps";
 import { environment } from "src/environments/environment.prod";
 
 @Component({
-  selector: 'app-encuentra-viajes',
-  templateUrl: './encuentra-viajes.page.html',
-  styleUrls: ['./encuentra-viajes.page.scss'],
+    selector: 'app-encuentra-viajes',
+    templateUrl: './encuentra-viajes.page.html',
+    styleUrls: ['./encuentra-viajes.page.scss'],
+    standalone: false
 })
 export class EncuentraViajesPage {
   @ViewChild('map')mapRef!: ElementRef;
